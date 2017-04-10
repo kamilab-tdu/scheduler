@@ -105,7 +105,7 @@ class PeriodParser:
         self.num_pattern = re.compile('\d+')
 
     def parse_clock(self, clock):
-        clocks = self.num_pattern.findall(clock)
+        clocks = self.num_pattern.findall(str(clock))
 
         # only hour is set
         if len(clocks) < 2:
@@ -117,7 +117,7 @@ class PeriodParser:
             return map(int, clocks)
 
     def parse_time(self, time):
-        clocks = self.time_pattern.findall(time)
+        clocks = self.time_pattern.findall(str(time))
 
         # single time is set
         if len(clocks) < 2:
@@ -129,7 +129,7 @@ class PeriodParser:
             return map(self.parse_clock, clocks)
 
     def parse_period(self, period):
-        periods = self.num_pattern.findall(period)
+        periods = self.num_pattern.findall(str(period))
 
         # single period is set
         if len(periods) < 2:
